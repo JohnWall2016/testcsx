@@ -52,3 +52,7 @@ using Utils;
 //    z.Id.WriteLine();
 
 2.ToString("C").WriteLine();
+50.ToString(@"#0").WriteLine();
+
+var a = new int[]{1,2,3,4};
+Console.WriteLine(a.GetType());
