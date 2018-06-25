@@ -51,8 +51,57 @@ using Utils;
 //foreach (var z in TimeZoneInfo.GetSystemTimeZones())
 //    z.Id.WriteLine();
 
-2.ToString("C").WriteLine();
-50.ToString(@"#0").WriteLine();
+//2.ToString("C").WriteLine();
+//50.ToString(@"#0").WriteLine();
 
-var a = new int[]{1,2,3,4};
-Console.WriteLine(a.GetType());
+//var a = new int[]{1,2,3,4};
+//Console.WriteLine(a.GetType());
+//
+//a = new int[3];
+//Console.WriteLine(a.GetType());
+//Console.WriteLine(a.GetType().Assembly);
+//Console.WriteLine(a.GetType().BaseType);
+//Console.WriteLine(a.GetType().BaseType.Assembly.Location);
+//
+//var b = new[] { "a", "b" };
+//Console.WriteLine(b.GetType());
+//
+//string[] c = { "c", "d" };
+//Console.WriteLine(c.GetType());
+
+void show<T>(IList<T> elems)
+{
+    "[".Write();
+    int len = elems.Count;
+    if (len > 0)
+    {
+        if (len > 1)
+        {
+            for (var i = 0; i < len - 1; i++)
+            {
+                $"{elems[i]}, ".Write();
+            }
+        }
+        $"{elems[len-1]}".Write();
+    }
+    "]".WriteLine();
+}
+
+var words = new List<string>();
+
+words.Add("melon");
+words.Add("avocado");
+words.AddRange(new[] { "banana", "plum" });
+words.Insert(0, "lemon");
+words.InsertRange(0, new[] { "peach", "nashi" });
+show(words);
+
+words.Remove("melon");
+words.RemoveAt(3);
+show(words);
+
+words.RemoveRange(0, 2);
+show(words);
+
+var subwords = words.GetRange(2, 2);
+show(subwords);
