@@ -69,39 +69,64 @@ using Utils;
 //string[] c = { "c", "d" };
 //Console.WriteLine(c.GetType());
 
-void show<T>(IList<T> elems)
+//void show<T>(IList<T> elems)
+//{
+//    "[".Write();
+//    int len = elems.Count;
+//    if (len > 0)
+//    {
+//        if (len > 1)
+//        {
+//            for (var i = 0; i < len - 1; i++)
+//            {
+//                $"{elems[i]}, ".Write();
+//            }
+//        }
+//        $"{elems[len-1]}".Write();
+//    }
+//    "]".WriteLine();
+//}
+//
+//var words = new List<string>();
+//
+//words.Add("melon");
+//words.Add("avocado");
+//words.AddRange(new[] { "banana", "plum" });
+//words.Insert(0, "lemon");
+//words.InsertRange(0, new[] { "peach", "nashi" });
+//show(words);
+//
+//words.Remove("melon");
+//words.RemoveAt(3);
+//show(words);
+//
+//words.RemoveRange(0, 2);
+//show(words);
+//
+//var subwords = words.GetRange(2, 2);
+//show(subwords);
+
+//class Person
+//{
+//    internal string Name { get; set; }
+//    internal Person() {}
+//    internal Person(string name) { Name = name; }
+//
+//    internal class Nest {}
+//}
+//
+//var p = new Person { Name = "Peter" };
+//p.Name.WriteLine();
+//typeof(Person).WriteLine();
+//typeof(Person.Nest).WriteLine();
+
+IEnumerable<char> query = "Not what you might expect";
+string vowels = "aeiou";
+
+for (int i = 0; i < vowels.Length; i++)
 {
-    "[".Write();
-    int len = elems.Count;
-    if (len > 0)
-    {
-        if (len > 1)
-        {
-            for (var i = 0; i < len - 1; i++)
-            {
-                $"{elems[i]}, ".Write();
-            }
-        }
-        $"{elems[len-1]}".Write();
-    }
-    "]".WriteLine();
+    var vowel = vowels[i];
+    query = query.Where (c => c != vowel);
 }
 
-var words = new List<string>();
-
-words.Add("melon");
-words.Add("avocado");
-words.AddRange(new[] { "banana", "plum" });
-words.Insert(0, "lemon");
-words.InsertRange(0, new[] { "peach", "nashi" });
-show(words);
-
-words.Remove("melon");
-words.RemoveAt(3);
-show(words);
-
-words.RemoveRange(0, 2);
-show(words);
-
-var subwords = words.GetRange(2, 2);
-show(subwords);
+foreach (char c in query) Console.Write (c);
