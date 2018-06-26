@@ -69,39 +69,28 @@ using Utils;
 //string[] c = { "c", "d" };
 //Console.WriteLine(c.GetType());
 
-void show<T>(IList<T> elems)
+void show<T>(IEnumerable<T> elems)
 {
-    "[".Write();
-    int len = elems.Count;
-    if (len > 0)
-    {
-        if (len > 1)
-        {
-            for (var i = 0; i < len - 1; i++)
-            {
-                $"{elems[i]}, ".Write();
-            }
-        }
-        $"{elems[len-1]}".Write();
-    }
-    "]".WriteLine();
+    var str = string.Join(", ", elems);
+    $"[{str}]".WriteLine();
 }
 
-var words = new List<string>();
+//var words = new List<string>();
+//
+//words.Add("melon");
+//words.Add("avocado");
+//words.AddRange(new[] { "banana", "plum" });
+//words.Insert(0, "lemon");
+//words.InsertRange(0, new[] { "peach", "nashi" });
+//show(words);
+//
+//words.Remove("melon");
+//words.RemoveAt(3);
+//show(words);
+//
+//words.RemoveRange(0, 2);
+//show(words);
+//
+//var subwords = words.GetRange(2, 1);
+//show(subwords);
 
-words.Add("melon");
-words.Add("avocado");
-words.AddRange(new[] { "banana", "plum" });
-words.Insert(0, "lemon");
-words.InsertRange(0, new[] { "peach", "nashi" });
-show(words);
-
-words.Remove("melon");
-words.RemoveAt(3);
-show(words);
-
-words.RemoveRange(0, 2);
-show(words);
-
-var subwords = words.GetRange(2, 2);
-show(subwords);
