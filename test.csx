@@ -87,22 +87,13 @@ using Utils;
 //    "]".WriteLine();
 //}
 //
-//var words = new List<string>();
-//
-//words.Add("melon");
-//words.Add("avocado");
-//words.AddRange(new[] { "banana", "plum" });
-//words.Insert(0, "lemon");
-//words.InsertRange(0, new[] { "peach", "nashi" });
-//show(words);
-//
-//words.Remove("melon");
-//words.RemoveAt(3);
-//show(words);
-//
-//words.RemoveRange(0, 2);
-//show(words);
-//
+
+void show<T>(IEnumerable<T> elems)
+{
+    var str = string.Join(", ", elems);
+    $"[{str}]".WriteLine();
+}
+
 //var subwords = words.GetRange(2, 2);
 //show(subwords);
 
