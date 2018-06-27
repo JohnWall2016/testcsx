@@ -111,13 +111,19 @@ void show<T>(IEnumerable<T> elems)
 //typeof(Person).WriteLine();
 //typeof(Person.Nest).WriteLine();
 
-IEnumerable<char> query = "Not what you might expect";
-string vowels = "aeiou";
+//IEnumerable<char> query = "Not what you might expect";
+//string vowels = "aeiou";
+//
+//for (int i = 0; i < vowels.Length; i++)
+//{
+//    var vowel = vowels[i];
+//    query = query.Where (c => c != vowel);
+//}
+//
+//foreach (char c in query) Console.Write (c);
 
-for (int i = 0; i < vowels.Length; i++)
-{
-    var vowel = vowels[i];
-    query = query.Where (c => c != vowel);
-}
+var words = "Not what you might expect".Split(' ');
+var pairs = words.Select((wd, i) => (i, wd));
 
-foreach (char c in query) Console.Write (c);
+foreach(var (i, w) in pairs)
+    Console.WriteLine($"{i}: {w}");
