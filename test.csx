@@ -2,6 +2,7 @@
 #r "Utils/bin/Debug/netstandard2.0/Utils.dll"
 
 using Utils;
+using System.Text.RegularExpressions;
 
 //foreach(var info in Encoding.GetEncodings())
 //    Console.WriteLine(info.Name);
@@ -122,8 +123,10 @@ void show<T>(IEnumerable<T> elems)
 //
 //foreach (char c in query) Console.Write (c);
 
-var words = "Not what you might expect".Split(' ');
-var pairs = words.Select((wd, i) => (i, wd));
+//var words = "Not what you might expect".Split(' ');
+//var pairs = words.Select((wd, i) => (i, wd));
+//
+//foreach(var (i, w) in pairs)
+//    Console.WriteLine($"{i}: {w}");
 
-foreach(var (i, w) in pairs)
-    Console.WriteLine($"{i}: {w}");
+Regex.IsMatch("efg", "^efg$").WriteLine();
