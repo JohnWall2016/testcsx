@@ -1,8 +1,13 @@
 #! "netcoreapp2.1"
+//#r "nuget: system.xml.linq, 2.1.0"
 #r "Utils/bin/Debug/netstandard2.0/Utils.dll"
 
 using Utils;
 using System.Text.RegularExpressions;
+using System.Linq;
+using System.Xml.Linq;
+
+using System.Threading;
 
 //foreach(var info in Encoding.GetEncodings())
 //    Console.WriteLine(info.Name);
@@ -129,4 +134,132 @@ void show<T>(IEnumerable<T> elems)
 //foreach(var (i, w) in pairs)
 //    Console.WriteLine($"{i}: {w}");
 
-Regex.IsMatch("efg", "^efg$").WriteLine();
+//Regex.IsMatch("efg", "^efg$").WriteLine();
+
+//var birds = new string[]
+//{
+//    "eagle",
+//    "owl",
+//    "sparrow",
+//};
+//
+//var dogs = new string[]
+//{
+//    "Labrador",
+//    "Poodle",
+//    "Chihuahua",
+//};
+//
+//var animals = new string[][]
+//{
+//    birds,
+//    dogs,
+//};
+//
+//var all = animals.SelectMany(clazz => clazz);
+//
+//show(all);
+
+//var bench = XElement.Parse(
+//@"<bench>
+//  <toolbox>
+//    <handtool>Hammer</handtool>
+//    <handtool>Rasp</handtool>
+//  </toolbox>
+//  <toolbox>
+//    <handtool>Saw</handtool>
+//    <powertool>Nailgun</powertool>
+//  </toolbox>
+//</bench>");
+//
+//foreach (var e in bench.Descendants())
+//{
+//    "---------------------------".WriteLine();
+//    $"{e.GetType()}:{e}".WriteLine();
+//    "---------------------------".WriteLine();
+//}
+//
+//"----------------------------------------".WriteLine();
+//
+//foreach (var e in bench.DescendantNodes())
+//{
+//    "---------------------------".WriteLine();
+//    $"{e.GetType()}:{e}".WriteLine();
+//    "---------------------------".WriteLine();
+//}
+
+//var tasks = new List<Task>();
+//
+//Task printAsync(object obj)
+//{
+//    return Task.Run(() =>
+//    {
+//        Thread.Sleep(1000);
+//        Console.WriteLine($"{obj} {Thread.CurrentThread.ManagedThreadId}|{Thread.CurrentThread.IsBackground}");
+//    });
+//}
+//
+//async Task printList()
+//{
+//    for (var i = 0; i < 10; i++)
+//        await printAsync(i);
+//    Console.WriteLine($"Done {Thread.CurrentThread.ManagedThreadId}|{Thread.CurrentThread.IsBackground}");
+//    Test(
+//         "aaa",
+//    );
+//}
+//
+//var awaiter = printList().GetAwaiter();
+//Console.WriteLine($"aaa {Thread.CurrentThread.ManagedThreadId}|{Thread.CurrentThread.IsBackground}");
+//Console.WriteLine($"bbb {Thread.CurrentThread.ManagedThreadId}|{Thread.CurrentThread.IsBackground}");
+//awaiter.GetResult();
+
+//Func<Task> delayedOutput = async () =>
+//{
+//    var task = Task.Delay(5000);
+//    Console.WriteLine($"Task.Delay: {task.Id} - {task.GetType()}");
+//    await task;
+//    Console.WriteLine("Done");
+//};
+//
+//var task = delayedOutput();
+//Console.WriteLine($"delayedOutput: {task.Id} - {task.GetType().BaseType.BaseType}");
+//
+//task.GetAwaiter().GetResult();
+
+
+ConsoleKeyInfo cki;
+Console.Clear();
+
+// Establish an event handler to process key press events.
+Console.CancelKeyPress += new ConsoleCancelEventHandler(myHandler);
+while (true) {
+    Console.Write("Press any key, or 'X' to quit, or ");
+    Console.WriteLine("CTRL+C to interrupt the read operation:");
+
+    // Start a console read operation. Do not display the input.
+    cki = Console.ReadKey(true);
+
+    // Announce the name of the key that was pressed .
+    Console.WriteLine("  Key pressed: {0}\n", cki.Key);
+
+    // Exit if the user pressed the 'X' key.
+    if (cki.Key == ConsoleKey.X) break;   
+}
+
+static void myHandler(object sender, ConsoleCancelEventArgs args)
+{
+    Console.WriteLine("\nThe read operation has been interrupted.");
+
+    Console.WriteLine("  Key pressed: {0}", args.SpecialKey);
+
+    Console.WriteLine("  Cancel property: {0}", args.Cancel);
+
+    // Set the Cancel property to true to prevent the process from terminating.
+    Console.WriteLine("Setting the Cancel property to true...");
+    args.Cancel = true;
+
+    // Announce the new value of the Cancel property.
+    Console.WriteLine("  Cancel property: {0}", args.Cancel);
+    Console.WriteLine("The read operation will resume...\n");
+}
